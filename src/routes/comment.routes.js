@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.post('/issues/:id/comments', authMiddleware, addComment);
-router.get('/issues/:id/comments', authMiddleware, getComments);
+router.post('/issues/:id/comments', verifyToken, addComment);
+router.get('/issues/:id/comments', verifyToken, getComments);
 
 export default router;
