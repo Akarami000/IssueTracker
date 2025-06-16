@@ -45,3 +45,20 @@ Issues
 Comments
 	•	POST /issues/:id/comments
 	•	GET /issues/:id/comments
+
+
+    __________________________________________________
+
+✅ Run Locally without Docker:
+
+# Install dependencies
+npm install
+
+# Set up PostgreSQL locally and update .env
+cp .env.example .env
+
+# Migrate DB
+npx prisma migrate dev --name init
+
+# Run app
+npm run dev
