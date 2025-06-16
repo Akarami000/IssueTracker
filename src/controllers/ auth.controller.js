@@ -12,16 +12,14 @@ export const signup = async (req, res) => {
     const token = generateToken(user);
     res.json({ token });
   } catch (err) {
-    res.status(500).json({ error: 'User creation failed' });
+    res.status(500).json({ error: `Error Message: ${err}` });
   }
 };
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  console.log('Login request:', req.body);
   
   try {
-    console.log('Login attempt for:', email);
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ error: 'Invalid credentials' });
@@ -29,7 +27,6 @@ export const login = async (req, res) => {
     const token = generateToken(user);
     res.json({ token });
   } catch (err) {
-    console.error('Login error:', err);
-    res.status(500).json({ error: 'Login failed' });
+    res.status(500).json({ error: `Error Message: ${err}` });
   }
 };

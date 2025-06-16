@@ -57,7 +57,7 @@ export const updateIssue = async (req, res) => {
     });
     res.json(issue);
   } catch (err) {
-    res.status(500).json({ error: 'Update failed or issue not found.' });
+    res.status(500).json({ error: `Update failed or issue not found.: ${err}` });
   }
 };
 
@@ -68,6 +68,6 @@ export const deleteIssue = async (req, res) => {
     await prisma.issue.delete({ where: { id } });
     res.status(204).send();
   } catch (err) {
-    res.status(500).json({ error: 'Delete failed or issue not found.' });
+    res.status(500).json({ error: `Delete failed or issue not found.: ${err}` });
   }
 };

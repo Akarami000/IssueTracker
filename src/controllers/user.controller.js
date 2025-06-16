@@ -21,7 +21,7 @@ export const getUser = async(req, res)=>{
    }
    catch(err){
     console.log('Error fetching user profile:', err);
-    return res.status(500).json({ error: 'Failed to fetch user profile' });
+    return res.status(500).json({ error: `Failed to fetch user profile:${err}` });
    }
 }
 
@@ -45,6 +45,6 @@ export const updateUser = async(req,res)=>{
         })
     }catch(err){
         console.log('Error updating user profile:', err);
-        return res.status(500).json({ error: 'Failed to update user profile' });
+        return res.status(500).json({ error: `Failed to update user profile:${err}` });
     }
 }

@@ -46,7 +46,7 @@ export const updateProject = async (req, res) => {
     });
     res.json(project);
   } catch (err) {
-    res.status(500).json({ error: 'Project not found or update failed.' });
+    res.status(500).json({ error: `Project not found or update failed.${err}` });
   }
 };
 
@@ -59,6 +59,6 @@ export const deleteProject = async (req, res) => {
     });
     res.status(204).send();
   } catch (err) {
-    res.status(500).json({ error: 'Project not found or delete failed.' });
+    res.status(500).json({ error: `Project not found or delete failed.: ${err}` });
   }
 };
